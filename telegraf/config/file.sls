@@ -17,9 +17,12 @@ telegraf/config/install:
                               lookup='telegraf/config/install'
                  )
               }}
-    - mode: 644
+    # The file holds output credentials (e.g. the InfluxDB password): readable
+    # by the service group only, and never shown in a state diff.
+    - mode: '0640'
     - user: {{ telegraf.system_user }}
     - group: {{ telegraf.system_group }}
+    - show_diff: False
     - makedirs: True
     - template: jinja
     - require:

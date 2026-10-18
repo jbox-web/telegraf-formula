@@ -4,7 +4,7 @@
 telegraf:
   config: /etc/telegraf/telegraf.conf
   system_user: root
-  system_group: root
+  system_group: telegraf
   toml_pkg: python-pytoml
   pkg:
     name: telegraf
