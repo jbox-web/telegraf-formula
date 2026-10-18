@@ -22,7 +22,7 @@ telegraf/config/install:
     - mode: '0640'
     - user: {{ telegraf.system_user }}
     - group: {{ telegraf.system_group }}
-    - show_diff: False
+    - show_changes: False
     - makedirs: True
     - template: jinja
     - require:
