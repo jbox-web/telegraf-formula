@@ -50,6 +50,7 @@ suites:
       state_top:
         base:
           '*':
+            - states.repo
             - telegraf._mapdata
             - telegraf
       pillars:
@@ -59,6 +60,9 @@ suites:
               - telegraf
       pillars_from_files:
         telegraf.sls: test/salt/pillar/telegraf.sls
+      dependencies:
+        - name: states
+          path: ./test/salt
     verifier:
       inspec_tests:
         - path: test/integration/default
