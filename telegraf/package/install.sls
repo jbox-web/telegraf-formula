@@ -15,7 +15,9 @@ telegraf/package/toml/install:
   {#-       Also remove all of the data associated with `telegraf.toml_pkg` #}
   {%- if grains['saltversioninfo'] >= [3001] or grains['saltversion'].startswith('3000-n/a-') %}
   pip.installed:
-  - name: toml
+  {#- Pinned to the version every minion runs: an unpinned name would pull a new
+      release into the Salt onedir at the next highstate. #}
+  - name: toml == 0.10.2
   {%- else %}
   pkg.installed:
     - name: {{ telegraf.toml_pkg }}
